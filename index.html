@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>제주도 붕어빵 지도</title>
+</head>
+<body>
+    <div class = "main" style="width:90%;height:100vh;">
+        <h1>제주도 붕어빵 지도</h1>
+        <div id="map" style="width:100%;height:80%;"></div>
+
+    </div>
+
+	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e76cc4903ec63f90d16bc8a188b95500"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+		        center: new kakao.maps.LatLng(33.361531, 126.531921), // 지도의 중심좌표
+		        level: 6, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    }; 
+
+		// 지도를 생성한다 
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+        // 데이터 저장
+        var 데이터 = [
+            [33.519552, 126.574247, '<div style="padding:5px;">동화초 붕어빵</div>'],
+            [33.514362, 126.574475, '<div style="padding:5px;">LH2단지 농협 옆 붕어빵</div>'],
+            [33.511944, 126.581770, '<div style="padding:5px;">제일상사옆 로또판매점 붕어빵</div>'],
+            [33.538098, 126.639783, '<div style="padding:5px;">교회 앞 붕어빵</div>'],
+            [33.499737, 126.529711, '<div style="padding:5px;">시청 붕어빵</div>'],
+            [33.507231, 126.529612, '<div style="padding:5px;">기산아파트 옆 마트 붕어빵</div>'],
+            [33.481494, 126.485288, '<div style="padding:5px;">노형 아이파크밑 사거리 붕어빵</div>'],
+            [33.500095, 126.526017, '<div style="padding:5px;">도남 주차장 앞 붕어빵</div>'],
+            [33.492267, 126.484867, '<div style="padding:5px;">신광초 아래 붕어빵</div>']
+        ];
+
+        for(var i = 0; i < 데이터.length; i++) {
+            // 지도에 마커를 생성하고  표시한다
+            var marker = new kakao.maps.Marker({
+                position: new kakao.maps.LatLng(데이터[i][0], 데이터[i][1]),
+                map: map // 마커를 표시할 지도 객체
+            }); 
+    
+            var infowindow = new kakao.maps.InfoWindow({
+                content: 데이터[i][2]
+            });
+    
+            infowindow.open(map, marker);
+        }
+	</script>
+</body>
+</html>
