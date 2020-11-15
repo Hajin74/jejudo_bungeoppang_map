@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Keywords" content="제주도 붕어빵 지도, 붕어빵, 제주도" />
+    <link rel="shortcut icon" href="bungeoppang.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&family=Song+Myung&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
@@ -54,7 +56,32 @@
             [33.507231, 126.529612, '<div style="padding:5px;">기산아파트 옆 마트 붕어빵</div>'],
             [33.481494, 126.485288, '<div style="padding:5px;">노형 아이파크밑 사거리 붕어빵</div>'],
             [33.500095, 126.526017, '<div style="padding:5px;">도남 주차장 앞 붕어빵</div>'],
-            [33.492267, 126.484867, '<div style="padding:5px;">신광초 아래 붕어빵</div>']
+            [33.492267, 126.484867, '<div style="padding:5px;">신광초 아래 붕어빵</div>'],
+            [33.538236, 126.639150, '<div style="padding:5px;">혼모심사우나 뒤 붕어빵</div>'],
+            [33.508924, 126.510306, '<div style="padding:5px;">용문버스정류장 붕어빵</div>'],
+            [33.485635, 126.431050, '<div style="padding:5px;">뚜레쥬르 아래 길가 붕어빵</div>'],
+            [33.416167, 126.264663, '<div style="padding:5px;">한림매일장 붕어빵</div>'],
+            [33.490500, 126.494604, '<div style="padding:5px;">모살물 붕어빵</div>'],
+            [33.483086, 126.471134, '<div style="padding:5px;">베스트마트 옆 붕어빵</div>'],
+            [33.487322, 126.534754, '<div style="padding:5px;">봉분식 붕어빵</div>'],
+            [33.484959, 126.485034, '<div style="padding:5px;">숙성도 부근 붕어빵</div>'],
+            [33.485138, 126.493346, '<div style="padding:5px;">뉴월드마트 붕어빵</div>'],
+            [33.475183, 126.548757, '<div style="padding:5px;">과일가게 옆 붕어빵</div>'],
+            [33.503702, 126.552866, '<div style="padding:5px;">하나로마트 붕어빵</div>'],
+            [33.483839, 126.491041, '<div style="padding:5px;">노블레스호텔 붕어빵</div>'],
+            [33.248546, 126.563528, '<div style="padding:5px;">제주은행 붕어빵</div>'],
+            [33.270877, 126.589936, '<div style="padding:5px;">마을회관 붕어빵</div>'],
+            [33.521303, 126.565983, '<div style="padding:5px;">이순애 순대국밥 붕어빵</div>'],
+            [33.537481, 126.619981, '<div style="padding:5px;">선창식당 붕어빵</div>'],
+            [33.495849, 126.537582, '<div style="padding:5px;">남광마트 붕어빵</div>'],
+            [33.505130, 126.514642, '<div style="padding:5px;">적십자 붕어빵</div>'],
+            [33.485670, 126.499301, '<div style="padding:5px;">중앙중 앞 붕어빵</div>'],
+            [33.496122, 126.525213, '<div style="padding:5px;">도남오거리 식당 붕어빵</div>'],
+            [33.492367, 126.434056, '<div style="padding:5px;">소보록 붕어빵</div>'],
+            [33.473840, 126.545916, '<div style="padding:5px;">구름 카스테라 붕어빵</div>'],
+            [33.512857, 126.528038, '<div style="padding:5px;">동문시장 다금바리빵</div>'],
+            [33.483508, 126.537523, '<div style="padding:5px;">오뎅먹는 붕어빵</div>'],
+            [33.473943, 126.542772, '<div style="padding:5px;">낭만상사 붕어빵</div>']
         ];
 
         var markers = [];
@@ -73,7 +100,7 @@
             //infowindow.open(map, marker);
             markers.push(marker);
 
-            kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+            kakao.maps.event.addListener(marker, 'mousedown', makeOverListener(map, marker, infowindow));
             kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
         }
 
