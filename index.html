@@ -3,21 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&family=Song+Myung&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <title>제주도 붕어빵 지도</title>
 </head>
 <body>
-    <div class = "main" style="width:90%;height:100vh;">
-        <h1>제주도 붕어빵 지도</h1>
-        <div id="map" style="width:100%;height:80%;"></div>
-
+    <div class = "bungeoppang_map_top">
+        <div class = "bungeoppang_map_top_menu">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class = "bungeoppang_map_top_title">
+            <h1>제주도 붕어빵 지도</h1> 
+        </div>
+        <div class = "bungeoppang_map_top_menu">
+            <i class="fas fa-info-circle"></i>
+        </div>
     </div>
 
-	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e76cc4903ec63f90d16bc8a188b95500"></script>
+    <div class = "bungeoppang_map_main">
+        <div id="map" style="width:100%;height:100%;"></div>
+    </div>
+
+	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=e76cc4903ec63f90d16bc8a188b95500&libraries=clusterer"></script>
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = {
-		        center: new kakao.maps.LatLng(33.361531, 126.531921), // 지도의 중심좌표
+		        center: new kakao.maps.LatLng(33.505196, 126.525845), // 지도의 중심좌표
 		        level: 6, // 지도의 확대 레벨
 		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
 		    }; 
@@ -25,6 +38,12 @@
 		// 지도를 생성한다 
 		var map = new kakao.maps.Map(mapContainer, mapOption); 
 
+        // 마커 클러스터러를 생성
+        var clusterer = new kakao.maps.MarkerClusterer({
+            map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
+            averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+            minLevel: 10 // 클러스터 할 최소 지도 레벨 
+        });
         // 데이터 저장
         var 데이터 = [
             [33.519552, 126.574247, '<div style="padding:5px;">동화초 붕어빵</div>'],
@@ -38,6 +57,8 @@
             [33.492267, 126.484867, '<div style="padding:5px;">신광초 아래 붕어빵</div>']
         ];
 
+        var markers = [];
+
         for(var i = 0; i < 데이터.length; i++) {
             // 지도에 마커를 생성하고  표시한다
             var marker = new kakao.maps.Marker({
@@ -49,8 +70,31 @@
                 content: 데이터[i][2]
             });
     
-            infowindow.open(map, marker);
+            //infowindow.open(map, marker);
+            markers.push(marker);
+
+            kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+            kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
         }
-	</script>
+
+        //클러스터러에 마커들을 추가합니다
+        clusterer.addMarkers(markers);
+
+        // 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+        function makeOverListener(map, marker, infowindow) {
+            return function() {
+                infowindow.open(map, marker);
+            };
+        }
+
+        // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+        function makeOutListener(infowindow) {
+            return function() {
+                infowindow.close();
+            };
+        }
+    </script>
+    
+    <script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous"></script>
 </body>
 </html>
