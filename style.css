@@ -20,9 +20,31 @@ body {
     margin-bottom: 3px;
 }
 
+.info {
+    display: none;
+}
+
+.bungeoppang_map_top_info i:hover{
+    color: yellowgreen;
+}
+
 .bungeoppang_map_main {
     width: 100%;
     height: 100%;
+}
+
+.overlaybox {
+    padding: 5px;
+    border: 1px solid black;
+    background-color: yellowgreen;
+    position: absolute;
+    bottom: 50px;
+    left: -45px;
+}
+
+.overlaybox1 {
+    display: flex;
+    justify-content: space-between;
 }
 
 
