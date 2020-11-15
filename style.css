@@ -34,7 +34,7 @@ body {
 }
 
 .overlaybox {
-    padding: 5px;
+    width: 200px;
     border: 1px solid black;
     background-color: yellowgreen;
     position: absolute;
@@ -43,8 +43,15 @@ body {
 }
 
 .overlaybox1 {
+    width: 100%;
+    padding: 5px;
+    border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
+}
+
+.overlaybox2 {
+    padding: 5px;
 }
 
 
