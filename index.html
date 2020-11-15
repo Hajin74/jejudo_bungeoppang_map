@@ -100,7 +100,7 @@
     
             //infowindow.open(map, marker);
             markers.push(marker);
-            //infowindow.open(map, marker);
+            infowindow.open(map, marker);
             kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
             kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
         }
